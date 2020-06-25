@@ -1,20 +1,5 @@
-const Usuarios = require('../models/Usuarios.js');
-const Cidade = require('../models/Cidade.js');
-const Estado = require('../models/Estado.js');
-const Chat = require('../models/Chat.js');
-const Product = require('../models/Product');
-const Product_Category = require('../models/Product_Category');
-const Images = require('../models/Images');
-const root_path = require('../../env')
-const bcrypt = require("bcrypt")
-const estados = [
-    {name:"AC"},{name:"AL"},{name:"AP"},{name:"AM"},{name:"BA"},{name:"CE"},{name:"DF"},{name:"ES"},{name:"GO"},{name:"MA"},{name:"MT"},
-    {name:"MS"},{name:"MG"},{name:"PA"},{name:"PB"},{name:"PR"},{name:"PE"},{name:"PI"},{name:"RJ"},{name:"RN"},{name:"RS"},{name:"RO"},
-    {name:"RR"},{name:"SC"},{name:"SP"},{name:"SE"},{name:"TO"},
-]
-const products_category = [
-    {name:"Sofas",description:"Sofas de Couro"},{name:"Eletronicos",description:"Aparelhos Eletronicos"},{name:"Artesanatos",description:"Produtos Manuais"},
-]
+
+
 module.exports ={
     async configDatabase(req, res) {    
         const verify_state = await Estado.findAll({

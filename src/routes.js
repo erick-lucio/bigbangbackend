@@ -4,9 +4,9 @@ const ChatController = require('./controllers/ChatController');
 const DefaultController = require('./controllers/DefaultController');
 const ProductController = require('./controllers/ProductController');
 const routes = express.Router();
-const multer = require('multer');
+
 const path = require('path')
-const multerconfig = require('../src/config/multer');
+
 const { function1 } = require('./controllers/ProductController');
 
 function check_autentication(){  
@@ -17,7 +17,7 @@ function check_autentication(){
   }
 }
 //REALIZA CONFIGURAÇÃO/ INSERTS INICIAIS PADROES
-routes.get('/config', function (req, res, next) {
+routes.get('/getsugestions', function (req, res, next) {
     //testa header
     next();
 },DefaultController.configDatabase);
