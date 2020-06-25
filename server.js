@@ -22,6 +22,9 @@ app.listen(PORT, () => {
 });
 
 /*
+You can call by city name or city name, state code and country code. API responds with a list of weather parameters that match a search request.
+API call:
+api.openweathermap.org/data/2.5/weather?q={city name}&appid={your api key}
 
 
 Criar um micro-serviço que receba requisições HTTP no formato REST que receba como parâmetro o nome de uma cidade ou uma combinação de latitude e longitude e retorne uma sugestão de playlist (array com o título das músicas) de acordo com a temperatura atual da cidade.
