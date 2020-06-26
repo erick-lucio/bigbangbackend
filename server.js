@@ -3,13 +3,12 @@ const routes = require('./src/routes');
 const cors = require('cors');
 const bodyParser = require('body-parser')
 const app = express();
-const helmet = require('helmet')
 
-require('./src/database');
+
+
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use(helmet())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
 app.use(routes);
@@ -24,8 +23,9 @@ app.listen(PORT, () => {
 /*
 You can call by city name or city name, state code and country code. API responds with a list of weather parameters that match a search request.
 API call:
-api.openweathermap.org/data/2.5/weather?q={city name}&appid={your api key}
-
+http://api.openweathermap.org/data/2.5/weather?q=cityname&appid=558af5ea93234806e14ffe5dadd9587a
+http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=558af5ea93234806e14ffe5dadd9587a
+-273,15
 
 Criar um micro-serviço que receba requisições HTTP no formato REST que receba como parâmetro o nome de uma cidade ou uma combinação de latitude e longitude e retorne uma sugestão de playlist (array com o título das músicas) de acordo com a temperatura atual da cidade.
 Você pode usar qualquer linguágem e framework que quiser, use o que se sentir mais a vontade (sugerimos PHP ou NodeJS).

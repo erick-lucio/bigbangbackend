@@ -1,52 +1,79 @@
-
-
-module.exports ={
-    async configDatabase(req, res) {    
-        const verify_state = await Estado.findAll({
-            atributes:['name'],
-            where:{
-                name:"AC"
-            }
-        })
-        if(verify_state.length == 0){
-            const insert_states = await Estado.bulkCreate(estados);
-        }
-        const verify_super_admin = await Usuarios.findAll({
-            atributes:['email'],
-            where:{
-                email:"email@email.com"
-            }
-        })
-        if(verify_super_admin.length == 0){
-            const insert_users = await Usuarios.create({
-                name:"adminErick",
-                password:await bcrypt.hash("yuri20323", 10),
-                email:"email@email.com",
-                permission:"2"
-            })
-        }
-        const verify_product_category = await Product_Category.findAll({
-            atributes:['name'],
-
-        })
-        if(verify_product_category.length == 0){
-            const insert_product_category = await Product_Category.bulkCreate(products_category);
-        }
-        const insert_users = await Product.create({
-            name:"Bateria",
-            description:"Bateria de litium 5V",
-            product_category_id:1,
-            
-        })
-        res.status(200).send("Sucess") ;
-      },
-      async testeFunction(req, res) {    
-
+const axios = require('axios') ;
+function getMusic(number){
+  axios({
+    method: 'get',
+    url: "https://api.spotify.com/v1/browse/categories/party/playlists",
     
+    headers: {'Authorization': 'Bearer 773610915d194a73b6ebbef5b3dd471f'}
+    })
+    .then(function (response) {
+        console.log(response.response)
+        
+        
 
-        console.log(root_path)
-        res.status(200).sendFile('/src/imgRepository/Instagran_icon.png', { root:root_path }) ;
+    })
+    .catch(function (response) {
+        //handle error
+        console.log(response)
+        if(response.name=='Error'){
+          
+        }
+        
+       
+    });
+}
+module.exports ={
+    async mainRoute(req, res) {  
+        
+        if(!req.body.lat){
+          req.body.lat = ""
+        }
+        if(!req.body.log){
+            req.body.log = ""
+        }
+        if(!req.body.city){
+            req.body.city = ""
+        }
+        const {lat,log,city} = req.body; 
+        if(city != "" && (lat == "" && log == "")){
+          let url = "http://api.openweathermap.org/data/2.5/weather?q=cityname&appid=558af5ea93234806e14ffe5dadd9587a";        
+          url = url.replace(/cityname/, city); 
+          console.log(url,lat,log,city)
+          axios({
+            method: 'get',
+            url: url,
+            
+            //headers: {'Content-type': 'aplication/json'}
+            })
+            .then(function (response) {
+                console.log(response.data.main.temp-273.15)
+                res.status(200).send("ok")
+                getMusic(5)
+  
+            })
+            .catch(function (response) {
+                //handle error
+                console.log(response)
+                if(response.name=='Error'){
+                  res.status(404).send("Cidade nao encontrada") ;
+                }
+                
+               
+            });
+
+
+        }else{
+          if((lat != "" && log != "")&& city == "" ){
+
+          }else{
+
+          }
+        }
+
+        
       },
+     
+     
 }
 /*
 Acre 	AC 	Rio Branco
