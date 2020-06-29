@@ -8,12 +8,12 @@ const path = require('path')
 
 
 
-//REALIZA CONFIGURAÇÃO/ INSERTS INICIAIS PADROES
+
 routes.get('/getsugestions', function (req, res, next) {
-    //testa header
+  
     next();
 },DefaultController.mainRoute);
-//
+
 
 
 module.exports = routes;

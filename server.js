@@ -20,6 +20,7 @@ app.listen(PORT, () => {
     console.log(`Our app is running on port ${ PORT }`);
 });
 
+module.exports = app
 /*
 You can call by city name or city name, state code and country code. API responds with a list of weather parameters that match a search request.
 API call:
@@ -57,11 +58,5 @@ Organização do código (cleancode, DRY, SOLID, etc.)
 
 Submentendo a entrega
 Envie um email para thiago@bigbangdigital.com.br com o link para o código feito para cumprir o desafio (repositório público no GitHub/Gitlab/Gitbucket...)
-SPOTIFY
 
-Client ID 7bffb64a2ec54fea9831252aaba9cc65
-Client Secret 773610915d194a73b6ebbef5b3dd471f
-redi uri  https://localhost:3100 
-https://github.com/spotify/web-api-auth-examples
-https://medium.com/reprogramabr/consumindo-a-api-do-spotify-um-breve-passo-a-passo-fd210312fdd
 */
